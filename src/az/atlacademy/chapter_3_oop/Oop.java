@@ -211,16 +211,45 @@ interface Pump {
 }
 
 interface Bend extends Pump {
+    String k="";
     void bend(double tensileStrength);
+    private static void stroke(){
+
+    }
 }
 
-public class Robot {
+ class Robot {
     public static final void apply(Bend instruction, double input) {
         instruction.bend(input);
     }
 
     public static void main(String... future) {
         final Robot r = new Robot();
-        r.apply(x -> System.out.print(x + " bent!"), 5);
+       // r.apply(x -> System.out.print(x + " bent!"), 5);
+    }
+}
+
+
+class Tool {
+    private void repair() {} // r1
+    void use() {} // r2
+}
+class Hammer extends Tool {
+    private int repair() { return 0; } // r3
+    //private void use() {} // r4
+    public void bang() {} // r5
+}
+
+
+class Bush extends Plant {
+    String type = "bush";
+}
+ class Plant {
+    String type = "plant";
+    public static void main(String[] args) {
+        Plant w1 = new Bush();
+        Bush w2 = new Bush();
+        Plant w3 = w2;
+        System.out.print(w1.type+","+w2.type+","+w3.type);
     }
 }
