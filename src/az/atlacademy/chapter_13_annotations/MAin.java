@@ -36,3 +36,11 @@ class Orchestra {
   String type="t";
  Boolean compact=false;
  }
+
+
+ @interface CelestiaBody{
+    String name();
+
+ }
+ @CelestiaBody(name="earth")
+ class Planet{}
