@@ -1,5 +1,54 @@
 package az.atlacademy.chapter_3_oop;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.BiFunction;
+
+enum DaysOff {
+    Thanksgiving, PresidentsDay, ValentinesDay
+}
+
+interface Iface2 {
+    static void test3() {
+
+    }
+
+    default void test() {
+
+    }
+}
+
+
+interface GameItem {
+    int sell();
+}
+
+interface Speak {
+    default int talk() {
+        return 7;
+    }
+}
+
+interface Sing {
+    default int talk() {
+        return 5;
+    }
+}
+
+interface Pump {
+    void pump(double psi);
+}
+
+interface Bend extends Pump {
+    String k = "";
+
+    private static void stroke() {
+
+    }
+
+    void bend(double tensileStrength);
+}
+
 public class Oop {
 }
 
@@ -10,6 +59,11 @@ class Story {
 }
 
 class Adventure extends Story {
+    public static void main(String... u) {
+        var bedtime = new Adventure();
+        bedtime.recite(2);
+    }
+
     final void recite(final int chapter) { // g1
         switch (chapter) { // g2
             case 2:
@@ -18,25 +72,10 @@ class Adventure extends Story {
                 System.out.print(3);
         }
     }
-
-    public static void main(String... u) {
-        var bedtime = new Adventure();
-        bedtime.recite(2);
-    }
 }
 
 abstract class ABSclass {
     protected abstract void test();
-}
-
-interface Iface2 {
-    default void test() {
-
-    }
-
-    static void test3() {
-
-    }
 }
 
 class Phone {
@@ -60,16 +99,15 @@ class Phone {
 }
 
 class Dinosaur {
-    class Pterodactyl extends Dinosaur {
-    }
-
     public void roar() {
         var dino = new Dinosaur();
         dino.new Pterodactyl();
         new Dinosaur.Pterodactyl();
     }
-}
 
+    class Pterodactyl extends Dinosaur {
+    }
+}
 
 class Laptop extends Computer {
     public void startup() {
@@ -78,31 +116,21 @@ class Laptop extends Computer {
 }
 
 class Computer {
-    public void startup() {
-        System.out.print("computer-");
-    }
-
     public static void main(String[] args) {
         Computer computer = new Laptop();
         Laptop laptop = new Laptop();
         computer.startup();
         laptop.startup();
     }
+
+    public void startup() {
+        System.out.print("computer-");
+    }
 }
 
 class Cars {
     private static int x = 12;
     private int m = 12;
-
-    static class ttt {
-        int y = x;
-        //int n=m;
-    }
-
-    class ggg {
-        int y = x;
-        int n = m;
-    }
 
     private static void drive() {
     /*    static {
@@ -118,9 +146,23 @@ class Cars {
         drive();
         drive();
     }
+
+    static class ttt {
+        int y = x;
+        //int n=m;
+    }
+
+    class ggg {
+        int y = x;
+        int n = m;
+    }
 }
 
 class Canine {
+    public static void main(String[] a) {
+        //System.out.println(woof((short)5));
+    }
+
     /* public String woof(int bark) {
          return "1"+bark.toString();
      }*/
@@ -130,15 +172,6 @@ class Canine {
     public String woof(Object bark) {
         return "3" + bark.toString();
     }
-
-    public static void main(String[] a) {
-        //System.out.println(woof((short)5));
-    }
-}
-
-
-interface GameItem {
-    int sell();
 }
 
 abstract class Vegetable implements GameItem {
@@ -148,17 +181,13 @@ abstract class Vegetable implements GameItem {
 }
 
 class Turnip extends Vegetable {
-    public final int sell() {
-        return 3;
-    }
-
     public static void main(String[] expensive) {
         System.out.print(new Turnip().sell());
     }
-}
 
-enum DaysOff {
-    Thanksgiving, PresidentsDay, ValentinesDay
+    public final int sell() {
+        return 3;
+    }
 }
 
 class Vacation {
@@ -174,27 +203,14 @@ class Vacation {
     }
 }
 
-interface Speak {
-    default int talk() {
-        return 7;
-    }
-}
-
-interface Sing {
-    default int talk() {
-        return 5;
-    }
-}
-
 class Performance implements Sing, Speak {
-    public int talk(String... x) {
-        return x.length;
-    }
-
     public static void main(String[] notes) {
         System.out.print(new Performance().talk());
     }
 
+    public int talk(String... x) {
+        return x.length;
+    }
 
     @Override
     public int talk() {
@@ -205,39 +221,34 @@ class Performance implements Sing, Speak {
     }
 }
 
-
-interface Pump {
-    void pump(double psi);
-}
-
-interface Bend extends Pump {
-    String k="";
-    void bend(double tensileStrength);
-    private static void stroke(){
-
-    }
-}
-
- class Robot {
+class Robot {
     public static final void apply(Bend instruction, double input) {
         instruction.bend(input);
     }
 
     public static void main(String... future) {
         final Robot r = new Robot();
-       // r.apply(x -> System.out.print(x + " bent!"), 5);
+        // r.apply(x -> System.out.print(x + " bent!"), 5);
     }
 }
 
 
 class Tool {
-    private void repair() {} // r1
-    void use() {} // r2
+    private void repair() {
+    } // r1
+
+    void use() {
+    } // r2
 }
+
 class Hammer extends Tool {
-    private int repair() { return 0; } // r3
+    private int repair() {
+        return 0;
+    } // r3
+
     //private void use() {} // r4
-    public void bang() {} // r5
+    public void bang() {
+    } // r5
 }
 
 
@@ -245,29 +256,32 @@ class Bush extends Plant {
     String type = "bush";
 }
 
- class Plant {
+class Plant {
     String type = "plant";
+
     public static void main(String[] args) {
         Plant w1 = new Bush();
         Bush w2 = new Bush();
         Plant w3 = w2;
-        System.out.print(w1.type+","+w2.type+","+w3.type);
+        System.out.print(w1.type + "," + w2.type + "," + w3.type);
     }
 }
 
 
 class Penguin {
- enum Baby { EGG }
-  class Chick {
-     String h="ff";
-     enum Baby { EGG }
- }
- public static void main(String[] args) {
-         boolean match = false;
-         Baby egg = Baby.EGG;
-         switch (egg) {
-             case EGG:
-                 match = true;
-                 }
-         }
- }
+    public static void main(String[] args) {
+        boolean match = false;
+        Baby egg = Baby.EGG;
+        switch (egg) {
+            case EGG:
+                match = true;
+        }
+    }
+
+    enum Baby {EGG}
+
+    class Chick {
+        String h = "ff";
+        //  enum Baby { EGG }
+    }
+}
