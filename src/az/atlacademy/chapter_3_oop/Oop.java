@@ -244,6 +244,7 @@ class Hammer extends Tool {
 class Bush extends Plant {
     String type = "bush";
 }
+
  class Plant {
     String type = "plant";
     public static void main(String[] args) {
