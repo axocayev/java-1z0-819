@@ -254,3 +254,20 @@ class Bush extends Plant {
         System.out.print(w1.type+","+w2.type+","+w3.type);
     }
 }
+
+
+class Penguin {
+ enum Baby { EGG }
+  class Chick {
+     String h="ff";
+     enum Baby { EGG }
+ }
+ public static void main(String[] args) {
+         boolean match = false;
+         Baby egg = Baby.EGG;
+         switch (egg) {
+             case EGG:
+                 match = true;
+                 }
+         }
+ }
